@@ -1,0 +1,107 @@
+package com.thinkgem.jeesite.autocode.model;
+
+import com.thinkgem.jeesite.autocode.util.StringUtils;
+
+public class ColumnModel extends AbstractModelObject {
+	String columnName;
+	String javaName;
+	String javaType;
+	String isNull;
+	String isQuery;
+	String isList;
+	String isEdit;
+	String comment;
+	String isParamKey;
+	String dictTypeId;//数据字典ID
+	
+	/**
+	 * 做部分字段初始化操作
+	 */
+	public void init(){
+		//设置JAVA属性名
+		javaName = StringUtils.getJavaName(columnName);
+		
+		//设置是否为主键
+		if("PRI".equalsIgnoreCase(isParamKey)){
+			this.isParamKey = "Y";
+		}
+		this.isList = "Y";
+		this.isQuery = "N";
+		this.isEdit = "Y";
+		this.dictTypeId = "";
+		
+		String dbType = StringUtils.substringBefore(javaType, "(").toUpperCase();
+		if("VARCHAR".equals(dbType) || "CHAR".equals(dbType)){
+			this.javaType = "String";
+		}else if("DATETIME".equals(dbType)){
+			this.javaType = "Date";
+		}else if("BIGINT".equals(dbType)){
+			this.javaType = "Long";
+		}
+			
+	}
+	
+	public String getColumnName() {
+		return columnName;
+	}
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
+	}
+	public String getJavaName() {
+		return javaName;
+	}
+	public void setJavaName(String javaName) {
+		this.javaName = javaName;
+	}
+	public String getJavaType() {
+		return javaType;
+	}
+	public void setJavaType(String javaType) {
+		this.javaType = javaType;
+	}
+	public String getIsNull() {
+		return isNull;
+	}
+	public void setIsNull(String isNull) {
+		this.isNull = isNull;
+	}
+	public String getIsQuery() {
+		return isQuery;
+	}
+	public void setIsQuery(String isQuery) {
+		this.isQuery = isQuery;
+	}
+	public String getIsList() {
+		return isList;
+	}
+	public void setIsList(String isList) {
+		this.isList = isList;
+	}
+	public String getIsEdit() {
+		return isEdit;
+	}
+	public void setIsEdit(String isEdit) {
+		this.isEdit = isEdit;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	public String getIsParamKey() {
+		return isParamKey;
+	}
+	public void setIsParamKey(String isParamKey) {
+		this.isParamKey = isParamKey;
+	}
+
+	public String getDictTypeId() {
+		return dictTypeId;
+	}
+
+	public void setDictTypeId(String dictTypeId) {
+		this.dictTypeId = dictTypeId;
+	}
+
+}

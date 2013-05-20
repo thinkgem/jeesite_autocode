@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: jeesite autocode
+Bundle-SymbolicName: com.thinkgem.jeesite.autocode; singleton:=true
+Bundle-Version: 1.0.0.beta
+Bundle-Activator: com.thinkgem.jeesite.autocode.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.core.databinding.property,
+ org.eclipse.jface.databinding,
+ com.ibm.icu
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: lib/mysql-connector-java-5[1].1.5-bin.jar,
+ .,
+ lib/freemarker.jar,
+ lib/swing2swt.jar
