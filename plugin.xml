@@ -16,13 +16,20 @@
             </separator>
          </menu>
          <action
+               class="com.thinkgem.jeesite.autocode.actions.AboutAction"
+               icon="icons/about.png"
+               id="com.thinkgem.jeesite.autocode.actions.AboutAction"
+               label="关于代码生成器"
+               menubarPath="sampleMenu/sampleGroup">
+         </action>
+         <action
                label="增删改查模块生成"
                icon="icons/curd.png"
-               class="com.thinkgem.jeesite.autocode.actions.SampleAction"
+               class="com.thinkgem.jeesite.autocode.actions.CrudModAction"
                tooltip="增删改查模块"
                menubarPath="sampleMenu/sampleGroup"
                toolbarPath="sampleGroup"
-               id="com.thinkgem.jeesite.autocode.actions.SampleAction">
+               id="com.thinkgem.jeesite.autocode.actions.CrudModAction">
          </action>
          <action
                class="com.thinkgem.jeesite.autocode.actions.DataSourceAction"

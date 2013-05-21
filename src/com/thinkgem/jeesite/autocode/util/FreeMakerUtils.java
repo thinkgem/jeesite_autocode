@@ -21,6 +21,19 @@ public class FreeMakerUtils {
 		freemarkerCfg.setClassForTemplateLoading(cls, templatePath);
 		return freemarkerCfg;
 	}
+	
+	
+	public static Configuration getFreeMarkerCfg() {
+		Configuration freemarkerCfg = new Configuration();
+		freemarkerCfg.setBooleanFormat("true,false");
+		freemarkerCfg.setDefaultEncoding("UTF-8");
+		try {
+			freemarkerCfg.setDirectoryForTemplateLoading(new File(XmlObjectUtils.getCrudFtlPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return freemarkerCfg;
+	}
 
 	public static boolean generateFile(Configuration cfg,
 			String templateFileName, Map propMap, String relPath,

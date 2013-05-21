@@ -1,8 +1,16 @@
 package com.thinkgem.jeesite.autocode;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import com.thinkgem.jeesite.autocode.crud.StartWizard;
+import com.thinkgem.jeesite.autocode.util.FileUtils;
+import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -28,6 +36,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		initFtlFile();
 	}
 
 	/*
@@ -57,5 +66,27 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+	
+	private void initFtlFile(){
+		String ftlPath = XmlObjectUtils.getCrudFtlPath();
+		copyFtl(ftlPath,"controller.ftl");
+		copyFtl(ftlPath,"dao.ftl");
+		copyFtl(ftlPath,"entity.ftl");
+		copyFtl(ftlPath,"service.ftl");
+		copyFtl(ftlPath,"viewForm.ftl");
+		copyFtl(ftlPath,"viewList.ftl");
+	}
+	
+	private void copyFtl(String ftlPath,String fileName){
+		URL from = StartWizard.class.getResource("template\\"+fileName);
+		File dist = new File(ftlPath+"\\"+fileName);
+		if(!dist.exists()){
+			try {
+				FileUtils.copyURLToFile(from, dist);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

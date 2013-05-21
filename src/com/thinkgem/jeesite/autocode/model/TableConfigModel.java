@@ -79,5 +79,22 @@ public class TableConfigModel {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
+	@Override
+	public String toString() {
+		StringBuffer str = new StringBuffer();
+		str.append("tableName=").append(tableName).append("\r\n");
+		str.append("tableComment=").append(tableComment).append("\r\n");
+		str.append("topPackage=").append(topPackage).append("\r\n");
+		str.append("functionNameEn=").append(functionNameEn).append("\r\n");
+		str.append("functionNameCn=").append(functionNameCn).append("\r\n");
+		str.append("urlPrefix=").append(urlPrefix).append("\r\n");
+		str.append("jspLocation=").append(jspLocation).append("\r\n");
+		str.append("author=").append(author).append("\r\n");
+		str.append("version=").append(version).append("\r\n");
+		str.append("filePath=").append(filePath).append("\r\n");
+		return str.toString();
+	}
+	
+	
 	
 }

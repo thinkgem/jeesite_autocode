@@ -7,8 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
+
+import com.thinkgem.jeesite.autocode.crud.StartWizard;
 
 public class XmlObjectUtils {
 	/**
@@ -122,5 +123,20 @@ public class XmlObjectUtils {
 		String userDir = System.getProperty("user.dir");
 		String fileName = userDir +"\\crud-table.xml";
 		return fileName;
+	}
+	
+	public static String getCrudFtlPath(){
+		String userDir = System.getProperty("user.dir");
+		File dir = new File(userDir+"\\jeesite");
+		if (!dir.exists()) {
+			dir.mkdir();
+		}
+		
+		File cruddir = new File(userDir+"\\jeesite\\crud");
+		if (!cruddir.exists()) {
+			cruddir.mkdir();			
+		}
+		
+		return userDir+"\\jeesite\\crud\\ftl";
 	}
 }

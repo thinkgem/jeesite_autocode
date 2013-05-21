@@ -1,6 +1,8 @@
 package com.thinkgem.jeesite.autocode.crud;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import org.eclipse.jface.wizard.Wizard;
 
 import com.thinkgem.jeesite.autocode.model.TableConfigModel;
 import com.thinkgem.jeesite.autocode.model.TableModel;
+import com.thinkgem.jeesite.autocode.util.FileUtils;
 import com.thinkgem.jeesite.autocode.util.FreeMakerUtils;
 import com.thinkgem.jeesite.autocode.util.StringUtils;
 import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
@@ -66,14 +69,16 @@ public class StartWizard extends Wizard {
 		String basePath = pageTwo.getTableConfig().getFilePath();
 		
 		//生成文件
-		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(this.getClass(), "template");		
+		//Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(this.getClass(), "template");
 		
+		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg();		
 		FreeMakerUtils.generateFile(freemakerCfg, "entity.ftl", data, "src\\main\\java\\"+StringUtils.replace(tableconfig.getTopPackage(), ".", "\\") + "\\entity\\", StringUtils.capitalize(tableconfig.getTableJavaName()) +".java", basePath);
-		
-		
+				
 		MessageDialog.openInformation(super.getShell(), "代码生成成功", "代码生成成功，生成代码存放路径："+tableconfig.getFilePath());
 		return true;
 	}
+	
+	
 	
 	public void setTableModel(String name,String comment){
 		tableModel.setName(name);

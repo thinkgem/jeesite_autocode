@@ -58,7 +58,7 @@ public class PageOne extends WizardPage {
 	public PageOne() {
 		super("PageOne");
 		setTitle("选择数据连接");
-		setDescription("请选择数据库连接");
+		setDescription("请选择数据库连接,模板文件位于："+XmlObjectUtils.getCrudFtlPath());
 	}
 
 	/**

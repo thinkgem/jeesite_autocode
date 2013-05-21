@@ -1,3 +1,11 @@
+table属性
+${table}
+
+table所有列属性
+<#list columnList as x>
+${x}
+</#list>
+
 /**
  * There are <a href="https://github.com/thinkgem/jeesite">JeeSite</a> code generation
  */

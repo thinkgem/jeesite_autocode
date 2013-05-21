@@ -16,13 +16,13 @@ import com.thinkgem.jeesite.autocode.crud.StartWizard;
  * delegated to it.
  * @see IWorkbenchWindowActionDelegate
  */
-public class SampleAction implements IWorkbenchWindowActionDelegate {
+public class CrudModAction implements IWorkbenchWindowActionDelegate {
 	private IWorkbenchWindow window;
 	
 	/**
 	 * The constructor.
 	 */
-	public SampleAction() {
+	public CrudModAction() {
 		
 	}
 

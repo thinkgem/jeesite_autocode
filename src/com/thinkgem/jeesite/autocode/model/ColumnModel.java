@@ -104,4 +104,21 @@ public class ColumnModel extends AbstractModelObject {
 		this.dictTypeId = dictTypeId;
 	}
 
+	@Override
+	public String toString() {
+		StringBuffer str = new StringBuffer();
+		str.append("columnName=").append(columnName);
+		str.append(",javaName=").append(javaName);
+		str.append(",javaType=").append(javaType);
+		str.append(",isNull=").append(isNull);
+		str.append(",isQuery=").append(isQuery);
+		str.append(",isList=").append(isList);
+		str.append(",isEdit=").append(isEdit);
+		str.append(",comment=").append(comment);
+		str.append(",isParamKey=").append(isParamKey);
+		str.append(",dictTypeId=").append(dictTypeId);
+		return str.toString();
+	}
+
+	
 }
