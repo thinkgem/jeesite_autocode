@@ -23,6 +23,15 @@
                menubarPath="sampleMenu/sampleGroup">
          </action>
          <action
+               class="com.thinkgem.jeesite.autocode.actions.TreeModAction"
+               icon="icons/tree.png"
+               id="com.thinkgem.jeesite.autocode.actions.TreeModAction"
+               label="树状结构生成"
+               menubarPath="sampleMenu/sampleGroup"
+               style="push"
+               toolbarPath="sampleGroup">
+         </action>
+         <action
                label="增删改查模块生成"
                icon="icons/curd.png"
                class="com.thinkgem.jeesite.autocode.actions.CrudModAction"
