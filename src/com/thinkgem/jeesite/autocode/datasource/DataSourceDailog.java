@@ -56,6 +56,7 @@ public class DataSourceDailog extends Dialog {
 	private Button btnTest;
 	private Button btnNew;
 	private Text txtDbName;
+	private Button btnSave;
 
 	/**
 	 * Create the dialog.
@@ -184,7 +185,8 @@ public class DataSourceDailog extends Dialog {
 		btnNew.setLayoutData(gd_btnNew);
 		btnNew.setText("新建");
 		
-		Button btnSave = new Button(composite_1, SWT.NONE);
+		btnSave = new Button(composite_1, SWT.NONE);
+		btnSave.setEnabled(false);
 		btnSave.setToolTipText("保存所有配置");
 		btnSave.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -291,20 +293,6 @@ public class DataSourceDailog extends Dialog {
 		super.configureShell(newShell);
 		newShell.setText("数据源设置"); 
 	}
-
-	/*@Override
-	public boolean close() {		
-		boolean confirm = MessageDialog.openConfirm(getShell(),
-				"保存设置",
-				"是否保存设置?");
-		if(confirm){
-			XmlObjectUtils.objectXmlEncoder(dataSourceList, XmlObjectUtils.getDataSourceFileName());
-		}
-		super.close();
-		return true;
-	}*/
-	
-	
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
@@ -353,8 +341,10 @@ public class DataSourceDailog extends Dialog {
 		IObservableValue tableViewerDbNameObserveDetailValue = BeansObservables.observeDetailValue(tableViewerObserveSingleSelection_5, DataSource.class, "dbName", String.class);
 		IObservableValue txtDbNameTextObserveValue = SWTObservables.observeText(txtDbName, SWT.Modify);
 		bindingContext.bindValue(tableViewerDbNameObserveDetailValue, txtDbNameTextObserveValue, null, null);
-		
-		
+		//
+		IObservableValue dstableObserveSingleSelectionIndexObserveWidget_2 = SWTObservables.observeSingleSelectionIndex(dstable);
+		IObservableValue btnSaveObserveEnabledObserveWidget = SWTObservables.observeEnabled(btnSave);
+		bindingContext.bindValue(dstableObserveSingleSelectionIndexObserveWidget_2, btnSaveObserveEnabledObserveWidget,new SelectionUpdateValueStrategy(), new UpdateValueStrategy(UpdateValueStrategy.POLICY_NEVER));
 		//
 		return bindingContext;
 	}
