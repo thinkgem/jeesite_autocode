@@ -29,6 +29,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import com.thinkgem.jeesite.autocode.model.DataSource;
 import com.thinkgem.jeesite.autocode.model.TableModel;
 import com.thinkgem.jeesite.autocode.util.AutoCodeDbUtils;
+import com.thinkgem.jeesite.autocode.util.XmlObjectCrud;
 import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
 
 public class PageOne extends WizardPage {
@@ -58,7 +59,7 @@ public class PageOne extends WizardPage {
 	public PageOne() {
 		super("PageOne");
 		setTitle("选择数据连接");
-		setDescription("请选择数据库连接,模板文件位于："+XmlObjectUtils.getCrudFtlPath());
+		setDescription("请选择数据库连接,模板文件位于："+XmlObjectCrud.getFtlPath());
 	}
 
 	/**
@@ -156,7 +157,7 @@ public class PageOne extends WizardPage {
 	}
 	
 	private void setWizardTm(TableModel tm){
-		StartWizard wizard = (StartWizard)super.getWizard();
+		StartCurdWizard wizard = (StartCurdWizard)super.getWizard();
 		wizard.setTableModel(tm.getName(), tm.getComment());
 		
 		//设置表信息

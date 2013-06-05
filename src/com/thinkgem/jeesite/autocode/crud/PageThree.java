@@ -146,7 +146,7 @@ public class PageThree extends WizardPage {
 	}
 
 	public void onEnterPage() {
-		StartWizard wizard = (StartWizard) super.getWizard();
+		StartCurdWizard wizard = (StartCurdWizard) super.getWizard();
 		PageOne pageOne = (PageOne) wizard.getPage("PageOne");
 		PageTwo pageTwo = (PageTwo) wizard.getPage("PageTwo");
 		TableModel table = wizard.getTableModel();

@@ -28,7 +28,7 @@ public class FreeMakerUtils {
 		freemarkerCfg.setBooleanFormat("true,false");
 		freemarkerCfg.setDefaultEncoding("UTF-8");
 		try {
-			freemarkerCfg.setDirectoryForTemplateLoading(new File(XmlObjectUtils.getCrudFtlPath()));
+			freemarkerCfg.setDirectoryForTemplateLoading(new File(XmlObjectCrud.getFtlPath()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

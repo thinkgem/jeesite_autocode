@@ -8,9 +8,10 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import com.thinkgem.jeesite.autocode.crud.StartWizard;
+import com.thinkgem.jeesite.autocode.crud.StartCurdWizard;
+import com.thinkgem.jeesite.autocode.tree.StartTreeWizard;
 import com.thinkgem.jeesite.autocode.util.FileUtils;
-import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
+import com.thinkgem.jeesite.autocode.util.XmlObjectCrud;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -69,17 +70,50 @@ public class Activator extends AbstractUIPlugin {
 	}
 	
 	private void initFtlFile(){
-		String ftlPath = XmlObjectUtils.getCrudFtlPath();
-		copyFtl(ftlPath,"controller.ftl");
-		copyFtl(ftlPath,"dao.ftl");
-		copyFtl(ftlPath,"entity.ftl");
-		copyFtl(ftlPath,"service.ftl");
-		copyFtl(ftlPath,"viewForm.ftl");
-		copyFtl(ftlPath,"viewList.ftl");
+		copyCrudFtl();
+		copyTreeFtl();
 	}
 	
-	private void copyFtl(String ftlPath,String fileName){
-		URL from = StartWizard.class.getResource("template\\"+fileName);
+	/**
+	 * 拷贝增删查改结构生成配置
+	 */
+	private void copyCrudFtl(){
+		String ftlPath = XmlObjectCrud.getFtlPath();
+		copyCrudFtlSingle(ftlPath,"controller.ftl");
+		copyCrudFtlSingle(ftlPath,"dao.ftl");
+		copyCrudFtlSingle(ftlPath,"entity.ftl");
+		copyCrudFtlSingle(ftlPath,"service.ftl");
+		copyCrudFtlSingle(ftlPath,"viewForm.ftl");
+		copyCrudFtlSingle(ftlPath,"viewList.ftl");
+	}
+	
+	private void copyCrudFtlSingle(String ftlPath,String fileName){
+		URL from = StartCurdWizard.class.getResource("template\\"+fileName);
+		File dist = new File(ftlPath+"\\"+fileName);
+		if(!dist.exists()){
+			try {
+				FileUtils.copyURLToFile(from, dist);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * 拷贝树形结构生成配置
+	 */
+	private void copyTreeFtl(){
+		String ftlPath = XmlObjectCrud.getFtlPath();
+		copyTreeFtlSingle(ftlPath,"controller.ftl");
+		copyTreeFtlSingle(ftlPath,"dao.ftl");
+		copyTreeFtlSingle(ftlPath,"entity.ftl");
+		copyTreeFtlSingle(ftlPath,"service.ftl");
+		copyTreeFtlSingle(ftlPath,"viewForm.ftl");
+		copyTreeFtlSingle(ftlPath,"viewList.ftl");
+	}
+	
+	private void copyTreeFtlSingle(String ftlPath,String fileName){
+		URL from = StartTreeWizard.class.getResource("template\\"+fileName);
 		File dist = new File(ftlPath+"\\"+fileName);
 		if(!dist.exists()){
 			try {

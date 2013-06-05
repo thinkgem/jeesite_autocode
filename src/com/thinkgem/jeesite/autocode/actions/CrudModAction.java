@@ -6,7 +6,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 
-import com.thinkgem.jeesite.autocode.crud.StartWizard;
+import com.thinkgem.jeesite.autocode.crud.StartCurdWizard;
 
 /**
  * Our sample action implements workbench action delegate.
@@ -33,7 +33,7 @@ public class CrudModAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		StartWizard wizard = new StartWizard();
+		StartCurdWizard wizard = new StartCurdWizard();
 		WizardDialog dialog = new WizardDialog(window.getShell(), wizard);
 		dialog.create();
 		dialog.open();

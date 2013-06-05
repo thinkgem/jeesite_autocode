@@ -1,8 +1,6 @@
 package com.thinkgem.jeesite.autocode.crud;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,20 +9,22 @@ import org.eclipse.jface.wizard.Wizard;
 
 import com.thinkgem.jeesite.autocode.model.TableConfigModel;
 import com.thinkgem.jeesite.autocode.model.TableModel;
-import com.thinkgem.jeesite.autocode.util.FileUtils;
 import com.thinkgem.jeesite.autocode.util.FreeMakerUtils;
 import com.thinkgem.jeesite.autocode.util.StringUtils;
+import com.thinkgem.jeesite.autocode.util.XmlObjectCrud;
 import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
 
 import freemarker.template.Configuration;
 
-public class StartWizard extends Wizard {
+public class StartCurdWizard extends Wizard {
 	//所有全局变量防止在这里
 	
 	TableModel tableModel = new TableModel();
 
-	public StartWizard() {
-		setWindowTitle("增删改查操作类");
+	public StartCurdWizard() {
+		setWindowTitle("树状机构生成");
+		setHelpAvailable(false);
+		setNeedsProgressMonitor(false);
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class StartWizard extends Wizard {
 		addPage(new PageThree());
 		
 		//设置上一次操作的路径
-		TableConfigModel fileconfig = (TableConfigModel)XmlObjectUtils.objectXmlDecoder(XmlObjectUtils.getLeastCrudTable());
+		TableConfigModel fileconfig = (TableConfigModel)XmlObjectUtils.objectXmlDecoder(XmlObjectCrud.getLeastTable());
 		if(fileconfig!=null){
 			PageTwo pageTwo = (PageTwo)super.getPage("PageTwo");
 			TableConfigModel pttable = pageTwo.getTableConfig();
@@ -57,8 +57,8 @@ public class StartWizard extends Wizard {
 		TableConfigModel tableconfig = pageTwo.getTableConfig();
 		
 		PageThree pageThree = (PageThree)super.getPage("PageThree");
-		XmlObjectUtils.objectXmlEncoder(pageThree.getColumnList(), XmlObjectUtils.getLeastCrudColumns());		
-		XmlObjectUtils.objectXmlEncoder(tableconfig,XmlObjectUtils.getLeastCrudTable());
+		XmlObjectUtils.objectXmlEncoder(pageThree.getColumnList(), XmlObjectCrud.getLeastColumns());		
+		XmlObjectUtils.objectXmlEncoder(tableconfig,XmlObjectCrud.getLeastTable());
 		
 		Map data = new HashMap();
 		data.put("columnList", pageThree.getColumnList());
