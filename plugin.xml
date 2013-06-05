@@ -28,7 +28,6 @@
                id="com.thinkgem.jeesite.autocode.actions.TreeModAction"
                label="树状结构生成"
                menubarPath="sampleMenu/sampleGroup"
-               style="push"
                toolbarPath="sampleGroup">
          </action>
          <action
@@ -48,6 +47,14 @@
                menubarPath="sampleMenu/sampleGroup"
                toolbarPath="sampleGroup"
                tooltip="数据源管理">
+         </action>
+         <action
+               class="com.thinkgem.jeesite.autocode.actions.ReportModAction"
+               icon="icons/report.png"
+               id="com.thinkgem.jeesite.autocode.actions.ReportModAction"
+               label="SQL生成报表"
+               menubarPath="sampleMenu/sampleGroup"
+               style="push">
          </action>
       </actionSet>
    </extension>

@@ -71,7 +71,7 @@ public class StartCurdWizard extends Wizard {
 		//生成文件
 		//Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(this.getClass(), "template");
 		
-		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg();		
+		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(XmlObjectCrud.getFtlPath());		
 		FreeMakerUtils.generateFile(freemakerCfg, "entity.ftl", data, "src\\main\\java\\"+StringUtils.replace(tableconfig.getTopPackage(), ".", "\\") + "\\entity\\", StringUtils.capitalize(tableconfig.getTableJavaName()) +".java", basePath);
 				
 		MessageDialog.openInformation(super.getShell(), "代码生成成功", "代码生成成功，生成代码存放路径："+tableconfig.getFilePath());

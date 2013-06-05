@@ -13,6 +13,7 @@ public class TableConfigModel {
 	String author;
 	String version;
 	String filePath;
+	String sql;//执行的SQL语句
 	
 	public String getTableName() {
 		return tableName;
@@ -79,10 +80,18 @@ public class TableConfigModel {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
+	
+	public String getSql() {
+		return sql;
+	}
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
 	@Override
 	public String toString() {
 		StringBuffer str = new StringBuffer();
 		str.append("tableName=").append(tableName).append("\r\n");
+		str.append("sql=").append(sql).append("\r\n");
 		str.append("tableComment=").append(tableComment).append("\r\n");
 		str.append("topPackage=").append(topPackage).append("\r\n");
 		str.append("functionNameEn=").append(functionNameEn).append("\r\n");

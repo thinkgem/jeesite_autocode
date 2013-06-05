@@ -14,21 +14,14 @@ import freemarker.template.TemplateException;
 
 
 public class FreeMakerUtils {
-	public static Configuration getFreeMarkerCfg(Class cls, String templatePath) {
+	
+	public static Configuration getFreeMarkerCfg(String ftlPath) {
 		Configuration freemarkerCfg = new Configuration();
 		freemarkerCfg.setBooleanFormat("true,false");
-		freemarkerCfg.setDefaultEncoding("UTF-8");
-		freemarkerCfg.setClassForTemplateLoading(cls, templatePath);
-		return freemarkerCfg;
-	}
-	
-	
-	public static Configuration getFreeMarkerCfg() {
-		Configuration freemarkerCfg = new Configuration();
-		freemarkerCfg.setBooleanFormat("true,false");
+		freemarkerCfg.setNumberFormat("#");
 		freemarkerCfg.setDefaultEncoding("UTF-8");
 		try {
-			freemarkerCfg.setDirectoryForTemplateLoading(new File(XmlObjectCrud.getFtlPath()));
+			freemarkerCfg.setDirectoryForTemplateLoading(new File(ftlPath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

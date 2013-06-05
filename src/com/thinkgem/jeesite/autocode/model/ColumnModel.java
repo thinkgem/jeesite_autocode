@@ -6,6 +6,8 @@ public class ColumnModel extends AbstractModelObject {
 	String columnName;
 	String javaName;
 	String javaType;
+	int datasize;//数据大小
+	int digits;//小数点位数
 	String isNull;
 	String isQuery;
 	String isList;
@@ -95,13 +97,23 @@ public class ColumnModel extends AbstractModelObject {
 	public void setIsParamKey(String isParamKey) {
 		this.isParamKey = isParamKey;
 	}
-
 	public String getDictKey() {
 		return dictKey;
 	}
-
 	public void setDictKey(String dictKey) {
 		this.dictKey = dictKey;
+	}
+	public int getDatasize() {
+		return datasize;
+	}
+	public void setDatasize(int datasize) {
+		this.datasize = datasize;
+	}
+	public int getDigits() {
+		return digits;
+	}
+	public void setDigits(int digits) {
+		this.digits = digits;
 	}
 
 	@Override

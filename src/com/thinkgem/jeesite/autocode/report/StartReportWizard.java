@@ -1,4 +1,4 @@
-package com.thinkgem.jeesite.autocode.tree;
+package com.thinkgem.jeesite.autocode.report;
 
 import java.io.File;
 import java.util.HashMap;
@@ -11,17 +11,18 @@ import com.thinkgem.jeesite.autocode.model.TableConfigModel;
 import com.thinkgem.jeesite.autocode.model.TableModel;
 import com.thinkgem.jeesite.autocode.util.FreeMakerUtils;
 import com.thinkgem.jeesite.autocode.util.StringUtils;
+import com.thinkgem.jeesite.autocode.util.XmlObjectReport;
 import com.thinkgem.jeesite.autocode.util.XmlObjectTree;
 import com.thinkgem.jeesite.autocode.util.XmlObjectUtils;
 
 import freemarker.template.Configuration;
 
-public class StartTreeWizard extends Wizard {
+public class StartReportWizard extends Wizard {
 	//所有全局变量防止在这里
 	
 	TableModel tableModel = new TableModel();
 
-	public StartTreeWizard() {
+	public StartReportWizard() {
 		setWindowTitle("增删改查操作类");
 		setHelpAvailable(false);
 		setNeedsProgressMonitor(false);
@@ -71,7 +72,7 @@ public class StartTreeWizard extends Wizard {
 		//生成文件
 		//Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(this.getClass(), "template");
 		
-		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(XmlObjectTree.getFtlPath());		
+		Configuration freemakerCfg = FreeMakerUtils.getFreeMarkerCfg(XmlObjectReport.getFtlPath());		
 		FreeMakerUtils.generateFile(freemakerCfg, "entity.ftl", data, "src\\main\\java\\"+StringUtils.replace(tableconfig.getTopPackage(), ".", "\\") + "\\entity\\", StringUtils.capitalize(tableconfig.getTableJavaName()) +".java", basePath);
 				
 		MessageDialog.openInformation(super.getShell(), "代码生成成功", "代码生成成功，生成代码存放路径："+tableconfig.getFilePath());

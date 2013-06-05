@@ -72,22 +72,16 @@ public class XmlObjectUtils {
 	 *             其他运行时异常发生
 	 */
 	public static Object objectXmlDecoder(String objSource) {
-		//List objList = new ArrayList();
 		Object obj = null;
 		try {
 			File fin = new File(objSource);
-			FileInputStream fis = new FileInputStream(fin);
-			XMLDecoder decoder = new XMLDecoder(fis);
-			obj = decoder.readObject();
-			/*try {
-				while ((obj = decoder.readObject()) != null) {
-					objList.add(obj);
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-			}*/
-			fis.close();
-			decoder.close();
+			if(fin.exists()){
+				FileInputStream fis = new FileInputStream(fin);
+				XMLDecoder decoder = new XMLDecoder(fis);
+				obj = decoder.readObject();
+				fis.close();
+				decoder.close();
+			}
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {

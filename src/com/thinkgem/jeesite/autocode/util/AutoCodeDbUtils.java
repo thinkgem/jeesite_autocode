@@ -1,9 +1,9 @@
 package com.thinkgem.jeesite.autocode.util;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -92,12 +92,55 @@ public class AutoCodeDbUtils {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			
-			while (rs.next()) {				
+			while (rs.next()) {
 				ColumnModel column = new ColumnModel();
 				column.setColumnName(rs.getString("FIELD"));
 				column.setComment(rs.getString("COMMENT"));
 				column.setIsParamKey(rs.getString("KEY"));
 				column.setJavaType(rs.getString("TYPE"));
+				column.init();
+				list.add(column);
+			}
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(conn);
+		}
+		return null;
+	}
+	
+	
+	public static List<ColumnModel> getColumnListBySql(DataSource ds,final String sql){
+		//SQL增加条件过滤，只选择一条记录		
+		Connection conn = null;
+		
+		List<ColumnModel> list = new ArrayList<ColumnModel>();
+		
+		String newsql = sql;
+		
+		if ("ORACLE".equals(ds.getDataBaseType())) {
+			
+		}else if("MYSQL".equals(ds.getDataBaseType())){
+			newsql += " limit 0,1"; 
+		}
+
+		try {
+			conn = getConntion(ds);
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			
+			//spring dao 里面有具体的实现，回头翻阅下spring jdbc 代码
+			List<ColumnModel> colList = new ArrayList();
+			int columnCount = rsmd.getColumnCount();
+			for (int i = 1; i <= columnCount; i++) {
+				ColumnModel column = new ColumnModel();
+				column.setColumnName(rsmd.getColumnLabel(i));
+				column.setComment("");
+				column.setDigits(rsmd.getScale(i));
+				column.setJavaType(rsmd.getColumnTypeName(i));
 				column.init();
 				list.add(column);
 			}

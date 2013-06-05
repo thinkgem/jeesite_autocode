@@ -59,7 +59,7 @@ public class AboutDialog extends TitleAreaDialog {
 		label.setText("设计：");
 		
 		Label lblgitlikewindmanemailsomedayqqcom = new Label(composite_1, SWT.NONE);
-		lblgitlikewindmanemailsomedayqqcom.setText("风一样的男子(git account: likewindman    EMAIL:  someday_122@qq.com)");
+		lblgitlikewindmanemailsomedayqqcom.setText("git account: likewindman    EMAIL:  someday_122@qq.com");
 		new Label(composite_1, SWT.NONE);
 		
 		Label lblEmail = new Label(composite_1, SWT.NONE);
@@ -76,7 +76,6 @@ public class AboutDialog extends TitleAreaDialog {
 		label_2.setText("模板编制：");
 		
 		Label lblJeesite = new Label(composite_1, SWT.NONE);
-		lblJeesite.setText("JEESITE");
 		new Label(composite_1, SWT.NONE);
 		
 		Label label_3 = new Label(composite_1, SWT.NONE);
