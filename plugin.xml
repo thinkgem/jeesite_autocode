@@ -23,6 +23,14 @@
                menubarPath="sampleMenu/sampleGroup">
          </action>
          <action
+               class="com.thinkgem.jeesite.autocode.actions.ReportModAction"
+               icon="icons/report.png"
+               id="com.thinkgem.jeesite.autocode.actions.ReportModAction"
+               label="SQL生成报表"
+               menubarPath="sampleMenu/sampleGroup"
+               style="push">
+         </action>
+         <action
                class="com.thinkgem.jeesite.autocode.actions.TreeModAction"
                icon="icons/tree.png"
                id="com.thinkgem.jeesite.autocode.actions.TreeModAction"
@@ -47,14 +55,6 @@
                menubarPath="sampleMenu/sampleGroup"
                toolbarPath="sampleGroup"
                tooltip="数据源管理">
-         </action>
-         <action
-               class="com.thinkgem.jeesite.autocode.actions.ReportModAction"
-               icon="icons/report.png"
-               id="com.thinkgem.jeesite.autocode.actions.ReportModAction"
-               label="SQL生成报表"
-               menubarPath="sampleMenu/sampleGroup"
-               style="push">
          </action>
       </actionSet>
    </extension>
