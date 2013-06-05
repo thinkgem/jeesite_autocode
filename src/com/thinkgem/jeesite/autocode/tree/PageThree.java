@@ -47,7 +47,7 @@ public class PageThree extends WizardPage {
 
 	private TableViewer tableViewer;
 	
-	private String[] columnNames = new String[] {"columnName", "javaName", "javaType", "isNull", "isQuery", "isList", "isEdit", "comment", "isParamKey"};
+	private String[] columnNames = new String[] {"columnName", "javaName", "javaType", "isNull", "isQuery", "isList", "isEdit", "comment", "dictKey"};
 
 	/**
 	 * Create the wizard.
@@ -266,7 +266,7 @@ class ColumnLabelProvider extends LabelProvider implements ITableLabelProvider {
 			result = col.getComment() == null ? "" : col.getComment();
 			break;
 		case 7:
-			result = col.getDictTypeId();
+			result = col.getDictKey();
 			break;
 		default:
 			break;
@@ -318,7 +318,7 @@ class ColumnCellModifier implements ICellModifier {
 			result = new Boolean(!"Y".equals(col.getIsEdit()));
 			break;
 		case 7:
-			result = col.getDictTypeId();
+			result = col.getDictKey();
 			break;
 		default:
 			result = "";
@@ -353,7 +353,7 @@ class ColumnCellModifier implements ICellModifier {
 			col.setIsEdit(((Boolean) value).booleanValue()?"N":"Y");
 			break;
 		case 7:
-			col.setDictTypeId(StringUtils.trim((String)value));
+			col.setDictKey(StringUtils.trim((String)value));
 			break;
 		default:
 			//result = "";

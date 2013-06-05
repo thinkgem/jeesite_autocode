@@ -12,7 +12,7 @@ public class ColumnModel extends AbstractModelObject {
 	String isEdit;
 	String comment;
 	String isParamKey;
-	String dictTypeId;//数据字典ID
+	String dictKey;//数据字典ID
 	
 	/**
 	 * 做部分字段初始化操作
@@ -28,7 +28,7 @@ public class ColumnModel extends AbstractModelObject {
 		this.isList = "Y";
 		this.isQuery = "N";
 		this.isEdit = "Y";
-		this.dictTypeId = "";
+		this.dictKey = "";
 		
 		String dbType = StringUtils.substringBefore(javaType, "(").toUpperCase();
 		if("VARCHAR".equals(dbType) || "CHAR".equals(dbType)){
@@ -96,12 +96,12 @@ public class ColumnModel extends AbstractModelObject {
 		this.isParamKey = isParamKey;
 	}
 
-	public String getDictTypeId() {
-		return dictTypeId;
+	public String getDictKey() {
+		return dictKey;
 	}
 
-	public void setDictTypeId(String dictTypeId) {
-		this.dictTypeId = dictTypeId;
+	public void setDictKey(String dictKey) {
+		this.dictKey = dictKey;
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class ColumnModel extends AbstractModelObject {
 		str.append(",isEdit=").append(isEdit);
 		str.append(",comment=").append(comment);
 		str.append(",isParamKey=").append(isParamKey);
-		str.append(",dictTypeId=").append(dictTypeId);
+		str.append(",dictKey=").append(dictKey);
 		return str.toString();
 	}
 
