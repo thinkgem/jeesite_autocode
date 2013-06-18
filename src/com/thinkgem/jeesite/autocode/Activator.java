@@ -71,7 +71,7 @@ public class Activator extends AbstractUIPlugin {
 	
 	private void initFtlFile(){
 		copyCrudFtl();
-		copyTreeFtl();
+		//copyTreeFtl();
 	}
 	
 	/**
@@ -79,12 +79,12 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	private void copyCrudFtl(){
 		String ftlPath = XmlObjectCrud.getFtlPath();
-		copyCrudFtlSingle(ftlPath,"controller.ftl");
-		copyCrudFtlSingle(ftlPath,"dao.ftl");
+		//copyCrudFtlSingle(ftlPath,"controller.ftl");
+		//copyCrudFtlSingle(ftlPath,"dao.ftl");
 		copyCrudFtlSingle(ftlPath,"entity.ftl");
-		copyCrudFtlSingle(ftlPath,"service.ftl");
-		copyCrudFtlSingle(ftlPath,"viewForm.ftl");
-		copyCrudFtlSingle(ftlPath,"viewList.ftl");
+		//copyCrudFtlSingle(ftlPath,"service.ftl");
+		//copyCrudFtlSingle(ftlPath,"viewForm.ftl");
+		//copyCrudFtlSingle(ftlPath,"viewList.ftl");
 	}
 	
 	private void copyCrudFtlSingle(String ftlPath,String fileName){

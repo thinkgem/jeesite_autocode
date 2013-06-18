@@ -35,6 +35,7 @@ public class PageTwo extends WizardPage {
 	
 	private TableConfigModel tableConfig = new TableConfigModel();
 	private Text txtFilePath;
+	private Text txtPermission;
 
 	/**
 	 * Create the wizard.
@@ -111,6 +112,14 @@ public class PageTwo extends WizardPage {
 		
 		txtJspLocation = new Text(container, SWT.BORDER);
 		txtJspLocation.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
+		
+		Label label_5 = new Label(container, SWT.NONE);
+		label_5.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label_5.setText("权限前缀");
+		
+		txtPermission = new Text(container, SWT.BORDER);
+		txtPermission.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
 		
 		Label label_1 = new Label(container, SWT.NONE);
@@ -257,6 +266,10 @@ public class PageTwo extends WizardPage {
 		IObservableValue txtTopPackageObserveTextObserveWidget = SWTObservables.observeText(txtTopPackage, SWT.Modify);
 		IObservableValue tableConfigTopPackageObserveValue = PojoObservables.observeValue(tableConfig, "topPackage");
 		bindingContext.bindValue(txtTopPackageObserveTextObserveWidget, tableConfigTopPackageObserveValue, null, null);
+		//
+		IObservableValue txtPermissionObserveTextObserveWidget = SWTObservables.observeText(txtPermission, SWT.Modify);
+		IObservableValue tableConfigPermissionPrefixObserveValue = PojoObservables.observeValue(tableConfig, "permissionPrefix");
+		bindingContext.bindValue(txtPermissionObserveTextObserveWidget, tableConfigPermissionPrefixObserveValue, null, null);
 		//
 		return bindingContext;
 	}

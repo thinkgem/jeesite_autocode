@@ -27,6 +27,14 @@ public class FreeMakerUtils {
 		}
 		return freemarkerCfg;
 	}
+	
+	public static Configuration getFreeMarkerCfg(Class cls, String templatePath) {
+		Configuration freemarkerCfg = new Configuration();
+		freemarkerCfg.setBooleanFormat("true,false");
+		freemarkerCfg.setDefaultEncoding("UTF-8");
+		freemarkerCfg.setClassForTemplateLoading(cls, templatePath);
+		return freemarkerCfg;
+	}
 
 	public static boolean generateFile(Configuration cfg,
 			String templateFileName, Map propMap, String relPath,

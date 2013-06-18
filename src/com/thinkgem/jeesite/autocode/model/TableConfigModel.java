@@ -9,11 +9,13 @@ public class TableConfigModel {
 	String functionNameEn;
 	String functionNameCn;
 	String urlPrefix;
+	String permissionPrefix;
 	String jspLocation;
 	String author;
 	String version;
 	String filePath;
 	String sql;//执行的SQL语句
+	ColumnModel key;//主键字段
 	
 	public String getTableName() {
 		return tableName;
@@ -86,6 +88,23 @@ public class TableConfigModel {
 	}
 	public void setSql(String sql) {
 		this.sql = sql;
+	}
+	public String getSeqName(){
+		int idx = this.tableName.indexOf("_");
+		return this.tableName.substring(++idx).toUpperCase();
+	}
+	public ColumnModel getKey() {
+		return key;
+	}
+	public void setKey(ColumnModel key) {
+		this.key = key;
+	}	
+	
+	public String getPermissionPrefix() {
+		return permissionPrefix;
+	}
+	public void setPermissionPrefix(String permissionPrefix) {
+		this.permissionPrefix = permissionPrefix;
 	}
 	@Override
 	public String toString() {

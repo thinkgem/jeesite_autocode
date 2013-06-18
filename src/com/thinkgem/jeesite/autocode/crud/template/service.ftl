@@ -1,66 +1,29 @@
-/**
- * There are <a href="https://github.com/thinkgem/jeesite">JeeSite</a> code generation
- */
-package ${packageName}.${moduleName}.service${subModuleName};
+package ${table.topPackage}.services;
 
-import org.apache.commons.lang3.StringUtils;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
-import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.common.service.BaseService;
-import ${packageName}.${moduleName}.entity${subModuleName}.${ClassName};
-import ${packageName}.${moduleName}.dao${subModuleName}.${ClassName}Dao;
+import com.calf.framework.services.BaseService;
+import ${table.topPackage}.entity.${table.tableJavaName?cap_first};
+import ${table.topPackage}.qry.${table.functionNameEn?cap_first}Qry;
+import com.calf.framework.vo.Page;
 
-/**
- * ${functionName}Service
- * @author ${classAuthor}
- * @version ${classVersion}
- */
-@Component
-@Transactional(readOnly = true)
-public class ${ClassName}Service extends BaseService {
-
-	@SuppressWarnings("unused")
-	private static Logger logger = LoggerFactory.getLogger(${ClassName}Service.class);
+public interface ${table.functionNameEn?cap_first}Service extends BaseService{
+	/**
+	 * 保存
+	 **/
+	public String save${table.functionNameEn?cap_first}(${table.tableJavaName?cap_first} entity);
+	/**
+	 * 删除
+	 */
+	public String delete${table.functionNameEn?cap_first}(${table.tableJavaName?cap_first} entity);
+	/**
+	 * 查找分页信息
+	 */
+	public Page find${table.functionNameEn?cap_first}Page(${table.functionNameEn?cap_first}Qry qry);
 	
-	@Autowired
-	private ${ClassName}Dao ${className}Dao;
-	
-	public ${ClassName} get(Long id) {
-		return ${className}Dao.findOne(id);
-	}
-	
-	public Page<${ClassName}> find(Page<${ClassName}> page, ${ClassName} ${className}) {
-		DetachedCriteria dc = ${className}Dao.createDetachedCriteria();
-		if (${className}.getUser()!=null && ${className}.getUser().getId()>0){
-			dc.add(Restrictions.eq("user.id", ${className}.getUser().getId()));
-		}
-		if (StringUtils.isNotEmpty(${className}.getName())){
-			dc.add(Restrictions.like("name", "%"+${className}.getName()+"%"));
-		}
-		if (StringUtils.isNotEmpty(${className}.getRemarks())){
-			dc.add(Restrictions.like("remarks", "%"+${className}.getRemarks()+"%"));
-		}
-		dc.add(Restrictions.eq("delFlag", ${ClassName}.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
-		return ${className}Dao.find(page, dc);
-	}
-	
-	@Transactional(readOnly = false)
-	public void save(${ClassName} ${className}) {
-		${className}Dao.save(${className});
-	}
-	
-	@Transactional(readOnly = false)
-	public void delete(Long id) {
-		${className}Dao.deleteById(id);
-	}
-	
+	/**
+	 * 判断编码是否唯一
+	 * @return
+	 */
+	public boolean isUnique(${table.key.javaType} ${table.key.javaName});
 }
