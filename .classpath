@@ -4,6 +4,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java-5[1].1.5-bin.jar"/>
 	<classpathentry kind="lib" path="lib/freemarker.jar"/>
 	<classpathentry kind="lib" path="lib/blancosqlformatter-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc5.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
