@@ -88,8 +88,8 @@ public class Activator extends AbstractUIPlugin {
 	}
 	
 	private void copyCrudFtlSingle(String ftlPath,String fileName){
-		URL from = StartCurdWizard.class.getResource("template\\"+fileName);
-		File dist = new File(ftlPath+"\\"+fileName);
+		URL from = StartCurdWizard.class.getResource("template/"+fileName);
+		File dist = new File(ftlPath+"/"+fileName);
 		if(!dist.exists()){
 			try {
 				FileUtils.copyURLToFile(from, dist);
